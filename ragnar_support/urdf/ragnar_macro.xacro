@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<robot name="Ragnar" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find ragnar_support)/urdf/ragnar_leg_macro.xacro"/>
+
+  <xacro:macro name="ragnar" params="prefix">
+
+    <!-- Base Link -->
+
+    <link name="${prefix}base_link">
+      <visual>
+        <origin xyz="0 0 0.045" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://ragnar_support/meshes/base_link.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.5 0.5 0.5 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://ragnar_support/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+    <!-- The four ragnar arms -->
+    <xacro:ragnar_leg prefix="${prefix}" num="1" x="0.122" y="0.249" z="-0.0877" r="-0.577" p="-0.783" w="-1.311" d1="0.300" d2="0.550"/>
+    <xacro:ragnar_leg prefix="${prefix}" num="2" x="-0.122" y="0.249" z="-0.0877" r="-2.698" p="-0.788" w="-1.834" d1="0.300" d2="0.550"/>
+    <xacro:ragnar_leg prefix="${prefix}" num="3" x="-0.122" y="-0.249" z="-0.0877" r="-0.456" p="-0.783" w="1.831" d1="0.300" d2="0.550"/>
+    <xacro:ragnar_leg prefix="${prefix}" num="4" x="0.122" y="-0.249" z="-0.0877" r="-2.531" p="-0.788" w="1.307" d1="0.300" d2="0.550"/>
+
+    <!-- End Effector Link -->
+    <link name="${prefix}ee_link">
+      <visual>
+        <origin xyz="0 0.019 0" rpy="1.57 0 1.57" />
+        <geometry>
+          <mesh filename="package://ragnar_support/meshes/ragnar_ee.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="1 0 0 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.57 0 1.57" />
+        <geometry>
+          <mesh filename="package://ragnar_support/meshes/ragnar_ee.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}ee_joint" type="floating">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}ee_link" />
+    </joint>
+
+    <!-- Tool0 for compliance with ROS-I protocols -->
+    <link name="${prefix}tool0"/>
+    <joint name="${prefix}ee_link_to_tool0" type="fixed">
+      <parent link="${prefix}ee_link"/>
+      <child link="${prefix}tool0"/>
+    </joint>
+  </xacro:macro>
+</robot>
