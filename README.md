@@ -12,6 +12,12 @@ ROS Ragnar depends on the following core packages:
 
 **Please note that you will need an RViz version > 1.11.8**
 
+## Prepare the Environment
+
+  1. Install Git [Git](SiHaoShen/ROSDeltaRobot/tree/master/HowToSetupDeveloperPC_18-04.pdf)
+  2. Install ROS Melodic
+  3. Install Eclipse
+
 ## Simulation
 If you want to simulate the robot:
 ```
