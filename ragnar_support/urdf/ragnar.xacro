@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<robot name="Ragnar" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find ragnar_support)/urdf/ragnar_macro.xacro"/>
+
+  <link name="world"/>
+
+  <xacro:ragnar prefix=""/>
+
+  <joint name="world_to_ragnar" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" />
+  </joint>
+
+</robot>
