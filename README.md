@@ -1,6 +1,10 @@
 # ROSRagnarEDU
 ROS interface for Ragnar EDU
 
+## Calculation of IK and FK
+
+Describe how the inverse and forward kinemativ of Delta Robot is computed [Doku](https://github.com/SiHaoShen/ROSDeltaRobot/blob/main//Kinematic_Calculation_IK_FK_DeltaRobot.pdf)
+  
 ## Prepare the Environment
 
   1. Install Git [Doku](https://github.com/SiHaoShen/ROSDeltaRobot/blob/main//HowToSetupDeveloperPC_18-04.pdf)
