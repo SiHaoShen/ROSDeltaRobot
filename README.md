@@ -70,6 +70,17 @@ After these other components have been launched, you may run a test script with:
 rosrun ragnar_kinematics ragnar_demo_motions
 ```
 
+## Workarounds
+
+To create a delta robot, we need:
+  1. a driver to interface with the actuators
+  2. an FK/IK solver
+  3. an interface to control the robot over topics/services/actions
+
+The URDF is created with all floating joints. The tool plate is defined relative to base_link. T
+
+he robot publishes 4 driven joint positions. A custom state_publisher node performs kinematics to compute the positions of all 8 links and the tool plate, and publishes the resulting transform.
+
 ## Outstanding Issues
 
 This package is still in development, and requires a few components to be workable:
